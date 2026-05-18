@@ -25,8 +25,19 @@ def count_words(word_list): #this function counts how many times each word appea
         else:
             word_count[word] = 1 # start count at 1
     return word_count
+def find_common_words(count1, count2): # this function finds word that appear in both essays using set intersection
+    set1 = set(count1.keys()) # unique words from essay 1
+    set2 = set(count2.keys()) # unique words srom essay 2
 
+    common = set1 & set2 # intersection btn two essay
 
+    print(f"Total common words found: {len(common)}")
+    print(f"{word:<20 } {'essay1 Count':>15} {'essay2 Count':>15}")
+    print(f" {'-'*20} {'-'*15} {'-'*15}")
+     for word in sorted(common): # sorted() makes output alphabetical and readable
+        print(f"{word:<20} {count1[word]:>15} {count2[word]:>15}")
+
+     return common    
             
             
   
