@@ -16,6 +16,16 @@ def load_essay(filename): #this function reads a text and returns a list of clea
     except FileNotFoundError:
         print(f"[error] File '{filename}' was not found. please check the filename.")
         return[]
+def count_words(word_list): #this function counts how many times each word appears in list.
+    word_count = {}
+
+    for word in word_list:
+        if word in word_count:
+            word_count[word] += 1 # increment count
+        else:
+            word_count[word] = 1 # start count at 1
+    return word_count
+
 
             
             
