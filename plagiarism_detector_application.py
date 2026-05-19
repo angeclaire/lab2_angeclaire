@@ -89,3 +89,57 @@ def calculate_plagiarism(count1, count2):#this function calculates the plagiaris
 
      return plagiarism_percent
        
+ #main program starts here
+def main ():
+    print("PLAGIARISM DETECTOR APPLICATION")
+    print("\n[1] loading essays...")
+    word1 = load_essay("essay1.txt")
+    word2 = load_essay("essay2.txt")
+     
+    if not word1 or not word2:
+        print("\n cannot proceed without both essays.exiting")
+        return
+        
+        print(f"  essay1.txt loaded → {len(words1)} total words")
+        print(f"  essay2.txt loaded → {len(words2)} total words")
+
+        count1 = count_words(words1)
+        count2 = count_words(words2)
+
+        while True:
+         print("  [1] Show common words between essays")
+         print("  [2] Search for a specific word")
+         print("  [3] Calculate plagiarism percentage")
+         print("  [4] Exit")
+
+         choice = input("  Enter your choice (1/2/3/4): ").strip()
+ 
+        # Input validation: must be one of the valid options
+        if choice not in ["1", "2", "3", "4"]:
+            print("  [ERROR] Invalid choice. Please enter 1, 2, 3, or 4.")
+            continue
+            
+        if choice == "1":
+            print("Common Words")
+            find_common_words(count1, count2)
+            
+
+        elif choice == "2":
+             word = input("\n  Enter the word to search for: ")
+             print("Search Result")
+             result = search_word(word, count1, count2)
+             
+             print(f"  Found: {result}")
+ 
+        elif choice == "3":
+             print("\n Plagiarism Analysis ")
+             calculate_plagiarism(count1, count2)
+ 
+        elif choice == "4":
+            print("\n  Goodbye! Thanks for using Plagiarism Detector.\n")
+            break
+ 
+  #Entry point
+if __name__ == "__main__":
+    main()
+ 
