@@ -41,8 +41,8 @@ def find_common_words(count1, count2): # this function finds word that appear in
     return common    
 def search_word(word,count1, count2):#this function will search for soecific word in both essays.
      if not isinstance(word, str) or not word.strip():
-        print("  [ERROR] Please enter a valid word (non-empty text).")
-        return False
+         print("  [ERROR] Please enter a valid word (non-empty text).")
+         return False
      
      word = word.strip().lower()  # Normalize the word
  
@@ -52,8 +52,7 @@ def search_word(word,count1, count2):#this function will search for soecific wor
      if not found_in_1 and not found_in_2:
         print(f"  The word '{word}' was NOT found in either essay.")
         return False
- 
-    # Word found in at least one essay
+   # Word found in at least one essay
      count_in_1 = count1.get(word, 0)   # .get() returns 0 if key doesn't exist
      count_in_2 = count2.get(word, 0)
  
@@ -88,58 +87,50 @@ def calculate_plagiarism(count1, count2):#this function calculates the plagiaris
          print("plagiarism detected is less than 50%") 
 
      return plagiarism_percent
-       
- #main program starts here
+#main program starts here
 def main ():
     print("PLAGIARISM DETECTOR APPLICATION")
     print("\n[1] loading essays...")
-    word1 = load_essay("essay1.txt")
-    word2 = load_essay("essay2.txt")
+    words1 = load_essay("essay1.txt")
+    words2 = load_essay("essay2.txt")
      
-    if not word1 or not word2:
+    if not words1 or not words2:
         print("\n cannot proceed without both essays.exiting")
         return
         
-        print(f"  essay1.txt loaded → {len(words1)} total words")
-        print(f"  essay2.txt loaded → {len(words2)} total words")
+    print(f"  essay1.txt loaded :{len(words1)} total words")
+    print(f"  essay2.txt loaded :{len(words2)} total words")
 
-        count1 = count_words(words1)
-        count2 = count_words(words2)
+    count1 = count_words(words1)
+    count2 = count_words(words2)
 
-        while True:
-         print("  [1] Show common words between essays")
-         print("  [2] Search for a specific word")
-         print("  [3] Calculate plagiarism percentage")
-         print("  [4] Exit")
+    while True:
+      print("[1] Show common words between essays")
+      print("[2] Search for a specific word")
+      print("[3] Calculate plagiarism percentage")
+      print("[4] Exit")
 
-         choice = input("  Enter your choice (1/2/3/4): ").strip()
- 
-        # Input validation: must be one of the valid options
-        if choice not in ["1", "2", "3", "4"]:
-            print("  [ERROR] Invalid choice. Please enter 1, 2, 3, or 4.")
-            continue
-            
-        if choice == "1":
-            print("Common Words")
-            find_common_words(count1, count2)
-            
+      choice = input("Enter your choice (1/2/3/4): ").strip()
 
-        elif choice == "2":
-             word = input("\n  Enter the word to search for: ")
-             print("Search Result")
-             result = search_word(word, count1, count2)
-             
-             print(f"  Found: {result}")
- 
-        elif choice == "3":
-             print("\n Plagiarism Analysis ")
-             calculate_plagiarism(count1, count2)
- 
-        elif choice == "4":
-            print("\n  Goodbye! Thanks for using Plagiarism Detector.\n")
-            break
- 
-  #Entry point
+      if choice not in ["1", "2", "3", "4"]:   
+        print("[ERROR] Invalid choice.")
+        continue
+
+      if choice == "1":                          
+        find_common_words(count1, count2)
+
+      elif choice == "2":                        
+        word = input("Enter the word to search for: ")
+        result = search_word(word, count1, count2)
+        print(f"Found: {result}")
+
+      elif choice == "3":                        
+        calculate_plagiarism(count1, count2)
+
+      elif choice == "4":                        
+        print("\nGoodbye! Thanks for using Plagiarism Detector.")
+        break
+ #entry point
 if __name__ == "__main__":
     main()
  
