@@ -61,5 +61,31 @@ def search_word(word,count1, count2):#this function will search for soecific wor
      print(f" essay1: {count_in_1} time(s)")
      print(f" essay2: {count_in_2} time(s)")
      return True
-            
-  
+
+def calculate_plagiarism(count1, count2):#this function calculates the plagiarism percantage using set operations.
+     
+     set1 = set(count1.keys())
+     set2 = set(count2.keys())
+
+     intersection = set1 & set2
+     union = set1 | set2
+
+     if len(union) == 0:
+         print(" [WARNING] Both essays appear to be empty. Cannot calculate percentage.")       
+         return 0.0
+     
+     plagiarism_percent = (len(intersection) / len(union)) * 100
+     
+     print(f"\n  Unique words in Essay 1 : {len(set1)}")
+     print(f"  Unique words in Essay 2 : {len(set2)}")
+     print(f"  Intersection (common): {len(intersection)}")
+     print(f"  Union (total unique) : {len(union)}")
+     print(f"\n  Plagiarism Percentage : {plagiarism_percent:.2f}%")
+
+     if plagiarism_percent  >= 50:
+         print("Plagiarism detected greater than 50%")
+     else:
+         print("plagiarism detected is less than 50%") 
+
+     return plagiarism_percent
+       
