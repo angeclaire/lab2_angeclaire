@@ -39,11 +39,11 @@ def find_common_words(count1, count2): # this function finds word that appear in
         print(f"{word:<20} {count1[word]:>15} {count2[word]:>15}")
 
     return common    
-def search_word(word,count1, count2):#this function will search for soecific word in both essays.
+def search_word(word,count1, count2):#this function will search for specific word in both essays.
      if not isinstance(word, str) or not word.strip():
          print("  [ERROR] Please enter a valid word (non-empty text).")
          return False
-     
+      
      word = word.strip().lower()  # Normalize the word
  
      found_in_1 = word in count1
@@ -108,7 +108,7 @@ def main ():
       print("[1] Show common words between essays")
       print("[2] Search for a specific word")
       print("[3] Calculate plagiarism percentage")
-      print("[4] Exit")
+      print("[4] Exit") 
 
       choice = input("Enter your choice (1/2/3/4): ").strip()
 
