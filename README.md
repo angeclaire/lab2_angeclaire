@@ -4,7 +4,7 @@
 
 When you run the script, it will automatically load two essays named essay1.txt and essay2.txt from the same folder .It will clean and process the text from both files by converting all words to lowercase and removing punctuation, then count how many times each word appears in each essay .You will then be presented with an interactive menu where you can choose to view common words between the two essays, search for specific word, or calculate the plagiarism percentage. before running the script ensure that both essay1.txt and essay2.txt are placed in the same folder as plagiarism_detector_application.py .
 
-"""
+```
 Project structure
 lab2_angeclaire/
 ├── plagiarism_detector_application.py
@@ -12,7 +12,7 @@ lab2_angeclaire/
 ├── essay2.txt
 └── README.md
 
-"""
+```
 
 # Menu option
 
